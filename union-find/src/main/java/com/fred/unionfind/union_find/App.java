@@ -13,6 +13,7 @@ public class App
         quickFindUF.union(4, 3);
         quickFindUF.union(3, 8);
         quickFindUF.union(6, 5);
+        
         quickFindUF.union(9, 4);
         quickFindUF.union(2, 1);
         quickFindUF.union(5, 0);
