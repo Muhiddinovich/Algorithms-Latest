@@ -8,6 +8,8 @@ public class App
 {
     public static void main( String[] args )
     {
+    	
+    	//Quck Find
         QuickFindUF quickFindUF = new QuickFindUF(10);
         
         quickFindUF.union(4, 3);
@@ -20,8 +22,12 @@ public class App
         quickFindUF.union(7, 2);
         quickFindUF.union(6, 1);
         
-        System.out.println(quickFindUF.toString());
-        System.out.println(quickFindUF.connected(4, 9));
+//        System.out.println(quickFindUF.toString());
+//        System.out.println(quickFindUF.connected(4, 9));
+        
+        // Quick Union
+        
+       QuickUnion quickUnion = new QuickUnion(10);
     	
     	
     }
