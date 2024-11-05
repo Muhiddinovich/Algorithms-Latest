@@ -47,6 +47,9 @@ public class App {
 //		System.out.println(quickUnion.toString());
 
 		
+		
+		//Weighted Quick Union
+		
 		WeightedQuickUnion weightedQuickUnion = new WeightedQuickUnion(10);
 		System.out.println(weightedQuickUnion.toString());
 		
