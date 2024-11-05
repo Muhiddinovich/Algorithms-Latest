@@ -25,26 +25,49 @@ public class App {
 
 		// Quick Union
 
-		QuickUnion quickUnion = new QuickUnion(10);
-		System.out.println(quickUnion.toString());
-		quickUnion.union(4, 3);
-		System.out.println(quickUnion.toString());
-		quickUnion.union(3, 8);
-		System.out.println(quickUnion.toString());
-		quickUnion.union(6, 5);
-		System.out.println(quickUnion.toString());
-		quickUnion.union(9, 4);
-		System.out.println(quickUnion.toString());
-		quickUnion.union(2, 1);
-		System.out.println(quickUnion.toString());
-		quickUnion.union(5, 0);
-		System.out.println(quickUnion.toString());
-		quickUnion.union(7, 2);
-		System.out.println(quickUnion.toString());
-		quickUnion.union(6, 1);
-		System.out.println(quickUnion.toString());
-		quickUnion.union(7, 3);
-		System.out.println(quickUnion.toString());
+//		QuickUnion quickUnion = new QuickUnion(10);
+//		System.out.println(quickUnion.toString());
+//		quickUnion.union(4, 3);
+//		System.out.println(quickUnion.toString());
+//		quickUnion.union(3, 8);
+//		System.out.println(quickUnion.toString());
+//		quickUnion.union(6, 5);
+//		System.out.println(quickUnion.toString());
+//		quickUnion.union(9, 4);
+//		System.out.println(quickUnion.toString());
+//		quickUnion.union(2, 1);
+//		System.out.println(quickUnion.toString());
+//		quickUnion.union(5, 0);
+//		System.out.println(quickUnion.toString());
+//		quickUnion.union(7, 2);
+//		System.out.println(quickUnion.toString());
+//		quickUnion.union(6, 1);
+//		System.out.println(quickUnion.toString());
+//		quickUnion.union(7, 3);
+//		System.out.println(quickUnion.toString());
 
+		
+		WeightedQuickUnion weightedQuickUnion = new WeightedQuickUnion(10);
+		System.out.println(weightedQuickUnion.toString());
+		
+		weightedQuickUnion.union(4, 3);
+		System.out.println(weightedQuickUnion.toString());
+		weightedQuickUnion.union(3, 8);
+		System.out.println(weightedQuickUnion.toString());
+		weightedQuickUnion.union(6, 5);
+		System.out.println(weightedQuickUnion.toString());
+		weightedQuickUnion.union(9, 4);
+		System.out.println(weightedQuickUnion.toString());
+		weightedQuickUnion.union(2, 1);
+		System.out.println(weightedQuickUnion.toString());
+		weightedQuickUnion.union(5, 0);
+		System.out.println(weightedQuickUnion.toString());
+		weightedQuickUnion.union(7, 2);
+		System.out.println(weightedQuickUnion.toString());
+		weightedQuickUnion.union(6, 1);
+		System.out.println(weightedQuickUnion.toString());
+		weightedQuickUnion.union(7, 3);
+		System.out.println(weightedQuickUnion.toString());
+		System.out.println(weightedQuickUnion.connected(9, 2));
 	}
 }
