@@ -1,5 +1,7 @@
 package com.fred.unionfind.union_find;
 
+import com.fred.unionfind.NNGridPercolation.Percolation;
+
 /**
  * Hello world!
  *
@@ -8,17 +10,17 @@ public class App {
 	public static void main(String[] args) {
 
 		// Quck Find
-		QuickFindUF quickFindUF = new QuickFindUF(10);
-
-		quickFindUF.union(4, 3);
-		quickFindUF.union(3, 8);
-		quickFindUF.union(6, 5);
-
-		quickFindUF.union(9, 4);
-		quickFindUF.union(2, 1);
-		quickFindUF.union(5, 0);
-		quickFindUF.union(7, 2);
-		quickFindUF.union(6, 1);
+//		QuickFindUF quickFindUF = new QuickFindUF(10);
+//
+//		quickFindUF.union(4, 3);
+//		quickFindUF.union(3, 8);
+//		quickFindUF.union(6, 5);
+//
+//		quickFindUF.union(9, 4);
+//		quickFindUF.union(2, 1);
+//		quickFindUF.union(5, 0);
+//		quickFindUF.union(7, 2);
+//		quickFindUF.union(6, 1);
 
 //        System.out.println(quickFindUF.toString());
 //        System.out.println(quickFindUF.connected(4, 9));
@@ -74,21 +76,25 @@ public class App {
 //		System.out.println(weightedQuickUnion.connected(9, 2));
 		
 		
-		WeightedQuickUnionWithPathCompression compression=new WeightedQuickUnionWithPathCompression(10);
-		System.out.println(compression.toString());
-		compression.union(4, 3);
-		System.out.println(compression.toString());
-		compression.union(3, 8);
-		System.out.println(compression.toString());
-		compression.union(6, 5);
-		compression	.union(9, 4);
-		compression	.union(2, 1);
-		compression	.union(5, 0);
-		compression	.union(7, 2);
-		compression	.union(6, 1);
-		compression	.union(7, 3);
-		System.out.println(compression.toString());
+		//Weighted quick union with path compression
+//		WeightedQuickUnionWithPathCompression compression=new WeightedQuickUnionWithPathCompression(10);
+//		System.out.println(compression.toString());
+//		compression.union(4, 3);
+//		System.out.println(compression.toString());
+//		compression.union(3, 8);
+//		System.out.println(compression.toString());
+//		compression.union(6, 5);
+//		compression	.union(9, 4);
+//		compression	.union(2, 1);
+//		compression	.union(5, 0);
+//		compression	.union(7, 2);
+//		compression	.union(6, 1);
+//		compression	.union(7, 3);
+//		System.out.println(compression.toString());
+//		
 		
 		
+		Percolation percolation = new Percolation(5);
+		System.out.println(percolation.toString());
 	}
 }
