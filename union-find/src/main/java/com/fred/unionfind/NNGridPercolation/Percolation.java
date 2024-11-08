@@ -23,14 +23,14 @@ public class Percolation {
 	}
 	
 	public void printGrid() {
-		System.out.print("Top" + getTopVirtualNode());
+		System.out.print("Top-> " + getTopVirtualNode());
 		for (int i = 0; i < id.length-2; i++) {
 			if(i%n==0) {
 				System.out.print("\n\n");
 			}
 			System.out.print(id[i]+"\t");
 		}
-		System.out.print("\n\nTop-> " + getBottomVirtualNode());
+		System.out.print("\n\nBottom-> " + getBottomVirtualNode());
 	}
 	
 	
