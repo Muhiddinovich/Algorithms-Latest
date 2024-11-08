@@ -94,7 +94,8 @@ public class App {
 //		
 		
 		
-		Percolation percolation = new Percolation(5);
-		System.out.println(percolation.toString());
+		Percolation percolation = new Percolation(10);
+		percolation.printGrid();
+		
 	}
 }
