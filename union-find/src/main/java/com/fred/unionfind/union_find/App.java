@@ -94,7 +94,7 @@ public class App {
 //		
 		
 		
-		Percolation percolation = new Percolation(10);
+		Percolation percolation = new Percolation(8);
 		percolation.printGrid();
 		
 	}

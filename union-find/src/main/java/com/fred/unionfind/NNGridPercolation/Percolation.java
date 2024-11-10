@@ -5,9 +5,11 @@ public class Percolation {
 	
 	private int [] id;
 	private int n;
+	private boolean [] open; 
 
-	public Percolation(int N) {
+	public Percolation(int N) { 
 		id = new int[N*N+2];
+		open = new boolean [N*N+2];
 		for (int i = 0; i < id.length; i++) { // i-1, i-2 => top and bottom virtual nodes
 			id[i]=i;
 		}
@@ -32,7 +34,15 @@ public class Percolation {
 		}
 		System.out.print("\n\nBottom-> " + getBottomVirtualNode());
 	}
+
+	@Override
+	public String toString() {
+		return "Percolation [id=" + Arrays.toString(id) + ", open=" + Arrays.toString(open) + "]";
+	}
 	
+	public boolean isOpen(int i) {
+		return open[i];		
+	}
 	
 	
 	
