@@ -94,14 +94,60 @@ public class App {
 //		
 		
 		
-		Percolation percolation = new Percolation(8);
+		Percolation percolation = new Percolation(5);
 		
 		
 		percolation.printGrid();
-		System.out.println("\n");
-		percolation.union(54, 46);
-		System.out.println(percolation.root(54));
+		System.out.println("\n**************************************************************\n");
+		
+		percolation.openCell(0);
+		percolation.openCell(1);
+		
 		percolation.printGrid();
+		System.out.println("\n**************************************************************\n");
+		
+		percolation.openCell(7);
+		
+		percolation.printGrid();
+		System.out.println("\n**************************************************************\n");
+		
+		percolation.openCell(6);
+		
+		percolation.printGrid();
+		System.out.println("\n**************************************************************\n");
+		
+		percolation.openCell(12);
+		
+		percolation.printGrid();
+		System.out.println("\n**************************************************************\n");
+		
+		percolation.openCell(2);
+		
+		percolation.printGrid();
+		System.out.println("\n**************************************************************\n");
+		
+		percolation.openCell(16);
+		
+		percolation.printGrid();
+		System.out.println("\n**************************************************************\n");
+		
+		percolation.openCell(17);
+		
+		percolation.printGrid();
+		System.out.println("\n**************************************************************\n");
+		
+		percolation.openCell(21);
+		percolation.printGrid();
+		System.out.println("\n**************************************************************\n");
+		
+		System.out.println(percolation.percolated());
+		// to make sure the virtual nodes are open
+//		System.out.println(percolation.isOpen(percolation.getBottomVirtualNode())); 
+//		System.out.println(percolation.isOpen(percolation.getTopVirtualNode()));
+//		percolation.openCell(0);
+//		percolation.printGrid();
+		
+		
 		
 	}
 }

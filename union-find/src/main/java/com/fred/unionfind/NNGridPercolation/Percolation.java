@@ -18,6 +18,8 @@ public class Percolation {
 			sz[i] = 1;
 		}
 		n = N;
+		open[getTopVirtualNode()] = true; // to show virtual nodes are always open
+		open[getBottomVirtualNode()] = true; // to show virtual nodes are always open
 	}
 
 	@Override
@@ -99,18 +101,20 @@ public class Percolation {
 	}
 
 	public void union(int p, int q) {
-		int i = root(p); // i=4
-		int j = root(q); // j=3
+		if (open[q]) {
+			int i = root(p); // i=4
+			int j = root(q); // j=3
 
-		if (i == j) {
-			return;
-		}
-		if (sz[i] <= sz[j]) {
-			id[i] = j;
-			sz[j] += sz[i];
-		} else {
-			id[j] = i;
-			sz[i] += sz[j];
+			if (i == j) {
+				return;
+			}
+			if (sz[i] <= sz[j]) {
+				id[i] = j;
+				sz[j] += sz[i];
+			} else {
+				id[j] = i;
+				sz[i] += sz[j];
+			}
 		}
 	}
 
@@ -118,59 +122,92 @@ public class Percolation {
 		if (!isOpen(i)) {
 			if (isTopLeftCorner(i)) {
 				// neighbors: 2x
-				//n1=i+1
-				//n2=i+n
+				// n1=i+1
+				// n2=i+n
 				// union(i, n1), union(i,n2),union(i, getVirtualTopNode)
+				union(i, i + 1);
+				union(i, i + n);
+				union(i, getTopVirtualNode());
 			} else if (isTopRightCorner(i)) {
-				//neighbors 2x
-				//n1=i-1
-				//n2=i+n
-				//union(i,n1), union(i,n2), union(i,getVirtualTopNode)
+				// neighbors 2x
+				// n1=i-1
+				// n2=i+n
+				// union(i,n1), union(i,n2), union(i,getVirtualTopNode)
+				union(i, i - 1);
+				union(i, i + n);
+				union(i, getTopVirtualNode());
 			} else if (isBottomLeftCorner(i)) {
 				// neighbors 2x
-				//n1=i-n
-				//n2=i+1
-				//union(i, n1), union(i, n2), union(i, getVirtualBottomNode)
+				// n1=i-n
+				// n2=i+1
+				// union(i, n1), union(i, n2), union(i, getVirtualBottomNode)
+				union(i, i - n);
+				union(i, i + 1);
+				union(i, getBottomVirtualNode());
 			} else if (isBottomRightCorner(i)) {
-				//neighbors 2x
-				//n1=i-n
-				//n2=i-1
-				//union(i, n1), union(i, n2), union(i, getVirtualBottomNode)
+				// neighbors 2x
+				// n1=i-n
+				// n2=i-1
+				// union(i, n1), union(i, n2), union(i, getVirtualBottomNode)
+				union(i, i - n);
+				union(i, i - 1);
+				union(i, getBottomVirtualNode());
 			} else if (isTopEdge(i)) {
 				// Neighbors 3x
 				// n1=i-1
-				//n2=i+1
-				//n3=i+n
-				//union(i,n1) union(i, n2) union(i, n3) union(i,getVirtualTopNode )
+				// n2=i+1
+				// n3=i+n
+				// union(i,n1) union(i, n2) union(i, n3) union(i,getVirtualTopNode )
+				union(i, i - 1);
+				union(i, i + 1);
+				union(i, i + n);
+				union(i, getTopVirtualNode());
 			} else if (isBottomEdge(i)) {
 				// neighbors 3x
-				//n1=i-1
-				//n2=i+1
-				//n3=i-n
-				//union(i,n1) union(i, n2) union(i, n3) union(i,getVirtualBottomNode )
+				// n1=i-1
+				// n2=i+1
+				// n3=i-n
+				// union(i,n1) union(i, n2) union(i, n3) union(i,getVirtualBottomNode )
+				union(i, i - 1);
+				union(i, i + 1);
+				union(i, i - n);
+				union(i, getBottomVirtualNode());
 			} else if (isLeftEdge(i)) {
 				// neighbors 3x
-				//n1=i-n
-				//n2=i+1
-				//n3=i+n
-				//union(i,n1) union(i, n2) union(i, n3)
+				// n1=i-n
+				// n2=i+1
+				// n3=i+n
+				// union(i,n1) union(i, n2) union(i, n3)
+				union(i, i - n);
+				union(i, i + 1);
+				union(i, i + n);
 			} else if (isRightEdge(i)) {
-				//neighbors 3x
-				//n1=i-n
-				//n2=i-1
-				//n3=i+n
-				//union(i,n1) union(i, n2) union(i, n3)
+				// neighbors 3x
+				// n1=i-n
+				// n2=i-1
+				// n3=i+n
+				// union(i,n1) union(i, n2) union(i, n3)
+				union(i, i - n);
+				union(i, i - 1);
+				union(i, i + n);
 			} else {
-				//the node is inside the grid
-				//neighbors 4x
-				//n1=i-n
-				//n2=i-1
-				//n3=i+1
-				//n4=i+n
-				//union(i,n1) union(i, n2) union(i, n3) union(i,n4)
+				// the node is inside the grid
+				// neighbors 4x
+				// n1=i-n
+				// n2=i-1
+				// n3=i+1
+				// n4=i+n
+				// union(i,n1) union(i, n2) union(i, n3) union(i,n4)
+				union(i, i - n);
+				union(i, i - 1);
+				union(i, i + 1);
+				union(i, i + n);
 			}
-			open[i]=true;
+			open[i] = true;
 		}
 	}
 
+	public boolean percolated() {
+		return root(getTopVirtualNode())==root(getBottomVirtualNode());
+	}
 }
