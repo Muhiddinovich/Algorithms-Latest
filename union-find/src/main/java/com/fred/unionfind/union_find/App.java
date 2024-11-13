@@ -95,7 +95,10 @@ public class App {
 		
 		
 		Percolation percolation = new Percolation(8);
-		percolation.printGrid();
 		
+		
+		percolation.printGrid();
+		System.out.println("\n");
+		System.out.println(percolation.isRightEdge(47));
 	}
 }
