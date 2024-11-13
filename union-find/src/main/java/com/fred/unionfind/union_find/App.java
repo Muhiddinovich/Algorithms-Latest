@@ -99,6 +99,9 @@ public class App {
 		
 		percolation.printGrid();
 		System.out.println("\n");
-		System.out.println(percolation.isRightEdge(47));
+		percolation.union(54, 46);
+		System.out.println(percolation.root(54));
+		percolation.printGrid();
+		
 	}
 }

@@ -7,12 +7,15 @@ public class Percolation {
 	private int[] id;
 	private int n;
 	private boolean[] open;
+	private int[] sz; // to track size of tree in order to WeightedQuickUnion
 
 	public Percolation(int N) {
 		id = new int[N * N + 2];
 		open = new boolean[N * N + 2];
+		sz = new int[N * N + 2];
 		for (int i = 0; i < id.length; i++) { // i-1, i-2 => top and bottom virtual nodes
 			id[i] = i;
+			sz[i] = 1;
 		}
 		n = N;
 	}
@@ -81,6 +84,93 @@ public class Percolation {
 	public boolean isRightEdge(int i) {
 		return (i % n == (n - 1)) && (!isTopRightCorner(i)) && (!isBottomRightCorner(i));
 
+	}
+
+	public int root(int i) {
+		while (id[i] != i) {
+			id[i] = id[id[i]];
+			i = id[i];
+		}
+		return i;
+	}
+
+	public boolean connected(int p, int q) {
+		return root(p) == root(q);
+	}
+
+	public void union(int p, int q) {
+		int i = root(p); // i=4
+		int j = root(q); // j=3
+
+		if (i == j) {
+			return;
+		}
+		if (sz[i] <= sz[j]) {
+			id[i] = j;
+			sz[j] += sz[i];
+		} else {
+			id[j] = i;
+			sz[i] += sz[j];
+		}
+	}
+
+	public void openCell(int i) {
+		if (!isOpen(i)) {
+			if (isTopLeftCorner(i)) {
+				// neighbors: 2x
+				//n1=i+1
+				//n2=i+n
+				// union(i, n1), union(i,n2),union(i, getVirtualTopNode)
+			} else if (isTopRightCorner(i)) {
+				//neighbors 2x
+				//n1=i-1
+				//n2=i+n
+				//union(i,n1), union(i,n2), union(i,getVirtualTopNode)
+			} else if (isBottomLeftCorner(i)) {
+				// neighbors 2x
+				//n1=i-n
+				//n2=i+1
+				//union(i, n1), union(i, n2), union(i, getVirtualBottomNode)
+			} else if (isBottomRightCorner(i)) {
+				//neighbors 2x
+				//n1=i-n
+				//n2=i-1
+				//union(i, n1), union(i, n2), union(i, getVirtualBottomNode)
+			} else if (isTopEdge(i)) {
+				// Neighbors 3x
+				// n1=i-1
+				//n2=i+1
+				//n3=i+n
+				//union(i,n1) union(i, n2) union(i, n3) union(i,getVirtualTopNode )
+			} else if (isBottomEdge(i)) {
+				// neighbors 3x
+				//n1=i-1
+				//n2=i+1
+				//n3=i-n
+				//union(i,n1) union(i, n2) union(i, n3) union(i,getVirtualBottomNode )
+			} else if (isLeftEdge(i)) {
+				// neighbors 3x
+				//n1=i-n
+				//n2=i+1
+				//n3=i+n
+				//union(i,n1) union(i, n2) union(i, n3)
+			} else if (isRightEdge(i)) {
+				//neighbors 3x
+				//n1=i-n
+				//n2=i-1
+				//n3=i+n
+				//union(i,n1) union(i, n2) union(i, n3)
+			} else {
+				//the node is inside the grid
+				//neighbors 4x
+				//n1=i-n
+				//n2=i-1
+				//n3=i+1
+				//n4=i+n
+				//union(i,n1) union(i, n2) union(i, n3) union(i,n4)
+			}
+			open[i]=true;
+		}
 	}
 
 }
