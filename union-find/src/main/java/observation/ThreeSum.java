@@ -29,7 +29,17 @@ public class ThreeSum { // Brute Force Algorithm
 			a[i] = scanner.nextInt(); // Read each element of the array
 		}
 		scanner.close();
+		
+		// Measuring the running time of count() function
+		long startTime = System.nanoTime(); // Start time
+
 		System.out.println("ThreeSum= " + count(a));
+
+        long endTime = System.nanoTime(); // End time
+        long duration = endTime - startTime; // Calculate the duration
+        System.out.println("Execution time: " + duration + " nanoseconds");
+        
+		
 
 	}
 }
